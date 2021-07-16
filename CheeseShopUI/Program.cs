@@ -1,4 +1,7 @@
 ﻿using CheeseShopLogic;
+using CheeseShopLogic.CheeseBoxes;
+using CheeseShopLogic.Infrastructure;
+using CheeseShopLogic.Orders;
 using CheeseShopLogic.Subscriptions;
 using CheeseShopLogic.Users;
 using System;
@@ -10,9 +13,13 @@ namespace CheeseShopUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Bienvenue a la fromagerie! We're your friendly Cheese-as-a-service (ChaaS).");
+            Console.WriteLine("Bienvenue a la fromagerie! We're your friendly Cheese-as-a-service (ChaaS). Let's show you the subscriptions in action.");
 
-            // set up the subscription
+            // OBSERVER
+            // I have subscribers/customers       
+            //  when a subscription changes
+            // the users of that subscription need to be notified
+            // so they can update themselves and keep their cheese preferences relevant
             SubjectSubscription subjectSubscription = new SubjectSubscription();
             StandardCheeseSubscription frenchFavesSubscription = new StandardCheeseSubscription("French Faves", 10.0m, subjectSubscription);
 
@@ -48,25 +55,51 @@ namespace CheeseShopUI
                 Console.WriteLine($"Hey {user.Name}! Your {frenchFavesSubscription.GetName()} has changed. {notification}");
             }
 
-            // OBSERVER
-            // I have subscribers/customers       
-            //  when a subscription changes
-            // the users need to be notified
-            // so they can update themselves and keep their cheese preferences relevant
-
             // STRATEGY
             // users can order individual cheese boxes
             // inside an order, the behaviour for assembling a cheese box is deferrred to an ICheeseBoxAssembly
             // all orders assemble cheese boxes but an order has nothing to do with how its cheese box gets assembled
             Console.WriteLine("Time to show you the other side of La Fromagerie: the cheese shop! Order a specially selected one-off cheese box and we will send it to you right away :->");
-            Order cheddarSelectionBox = 
 
+            var cheddarTypes = new List<CheeseType>()
+            {
+                CheeseType.Create("Strong Welsh Cheddar", "Wales", 5),
+                CheeseType.Create("Mild but Wild", "USA", 2),
+                CheeseType.Create("Da Orginal 1 from Cheddar Gorge", "England", 3)
+            };
 
-            // Yoann's order for the Creamy Delights cheese box will go to a cooler country: France. This means we need a 
-            // cheese box assembly algorithm that will assemble it in the normal packaging
-            // Gaddafi wants his Paneer Selection cheese box delivered to Libya so he will need a cheese assembly algorithm that will
-            // assemble it with a special cooling layer
+            CheeseBox cheddarSelectionBox = CheeseBox.Create("Cheddar Selection", cheddarTypes);
+            // this order is going to our French user so we need to give it the NorthernEuropeCheeseAssembly
+            // from the family of CheeseAssembly algorithms at runtime
+            NorthernEuropeCheeseAssembly cheeseAssemblyMethodForFrance = new NorthernEuropeCheeseAssembly();
+            Order yoannsCheddarSelectionOrder = Order.Create(new Guid(), DateTime.Now, cheeseAssemblyMethodForFrance, frenchUser, cheddarSelectionBox, DeliveryMethod.Standard);
 
+            Console.WriteLine(yoannsCheddarSelectionOrder.GetStatusMessage());
+            Console.WriteLine($"The total cost of your order is {yoannsCheddarSelectionOrder.GetTotalCost()}.");
+
+            // an order delegates the action of assembling the cheese box to a CheeseAssembly
+            // behaviour is encapsulated
+            var assemblyMessageForFrenchUsersOrder = yoannsCheddarSelectionOrder.PerformCheeseBoxAssembly();
+            Console.WriteLine(assemblyMessageForFrenchUsersOrder);
+
+            yoannsCheddarSelectionOrder.Dispatch();
+            Console.WriteLine(yoannsCheddarSelectionOrder.GetStatusMessage());
+
+            yoannsCheddarSelectionOrder.MarkAsDelivered();
+            Console.WriteLine(yoannsCheddarSelectionOrder.GetStatusMessage());
+
+            // now send the same cheese box to Gaddafi in Libya
+            NorthAfricaCheeseBoxAssembly cheeseAssemblyMethodForLibya = new NorthAfricaCheeseBoxAssembly();
+            Order gaddafisCheddarSelectionOrder = Order.Create(new Guid(), DateTime.Now, cheeseAssemblyMethodForLibya, moammarqadhafi, cheddarSelectionBox, DeliveryMethod.Free);
+
+            Console.WriteLine(gaddafisCheddarSelectionOrder.GetStatusMessage());
+            Console.WriteLine($"The total cost of your order is {gaddafisCheddarSelectionOrder.GetTotalCost()}.");
+
+            var assemblyMessageForGaddafisOrder = gaddafisCheddarSelectionOrder.PerformCheeseBoxAssembly();
+            Console.WriteLine(assemblyMessageForGaddafisOrder);
+
+            gaddafisCheddarSelectionOrder.Dispatch();
+            Console.WriteLine(gaddafisCheddarSelectionOrder.GetStatusMessage());
         }
     }
 }

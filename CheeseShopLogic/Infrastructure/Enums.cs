@@ -10,4 +10,11 @@ namespace CheeseShopLogic.Infrastructure
         Dispatched,
         Delivered
     }
+
+    public enum DeliveryMethod
+    {
+        NextDay,
+        Standard,
+        Free
+    }
 }

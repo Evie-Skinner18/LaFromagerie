@@ -9,7 +9,8 @@ namespace CheeseShopLogic.Orders
 {
     public class Order
     {
-        private Order(Guid id, DateTime dateOrdered, ICheeseBoxAssembly cheeseBoxAssembly, User orderingUser, CheeseBox cheeseBoxOrdered)
+        private Order(Guid id, DateTime dateOrdered, ICheeseBoxAssembly cheeseBoxAssembly, User orderingUser, 
+            CheeseBox cheeseBoxOrdered, DeliveryMethod deliveryMethod)
         {
             Id = id;
             DateOrdered = dateOrdered;
@@ -18,6 +19,7 @@ namespace CheeseShopLogic.Orders
             _cheeseBoxAssembly = cheeseBoxAssembly;
             _orderingUser = orderingUser;
             _cheeseBoxOrdered = cheeseBoxOrdered;
+            _deliveryMethod = deliveryMethod;
         }
 
         public Guid Id { get; set; }
@@ -28,11 +30,12 @@ namespace CheeseShopLogic.Orders
         private ICheeseBoxAssembly _cheeseBoxAssembly { get; set; }
         private User _orderingUser { get; set; }
         private CheeseBox _cheeseBoxOrdered { get; set; }
+        private DeliveryMethod _deliveryMethod { get; set; }
 
         public static Order Create(Guid id, DateTime dateOrdered, ICheeseBoxAssembly cheeseBoxAssembly, 
-            User orderingUser, CheeseBox cheeseBoxOrdered)
+            User orderingUser, CheeseBox cheeseBoxOrdered, DeliveryMethod deliveryMethod)
         {
-            var newOrder = new Order(id, dateOrdered, cheeseBoxAssembly, orderingUser, cheeseBoxOrdered);
+            var newOrder = new Order(id, dateOrdered, cheeseBoxAssembly, orderingUser, cheeseBoxOrdered, deliveryMethod);
             return newOrder;
         }
 
@@ -58,6 +61,24 @@ namespace CheeseShopLogic.Orders
         public string GetStatusMessage()
         {
             return _message;
+        }
+
+        public decimal GetTotalCost()
+        {
+            var priceOfCheeseBoxOrdered = _cheeseBoxOrdered.CalculateTotalPrice();
+            var totalCost = priceOfCheeseBoxOrdered + CalculateDeliveryCharge();
+            return totalCost;
+        }
+
+        public decimal CalculateDeliveryCharge()
+        {
+            switch (_deliveryMethod)
+            {
+                case DeliveryMethod.NextDay: return 5.0m;
+                case DeliveryMethod.Standard: return 1.0m;
+                case DeliveryMethod.Free: return 0m;
+                default: return 1.0m;
+            }
         }
     }
 }
