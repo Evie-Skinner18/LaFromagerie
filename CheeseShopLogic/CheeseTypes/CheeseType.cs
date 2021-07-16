@@ -4,6 +4,13 @@ namespace CheeseShopLogic
 {
     public class CheeseType
     {
+        private CheeseType(string name, string countryOfOrigin, int strength)
+        {
+            Name = name;
+            CountryOfOrigin = countryOfOrigin;
+
+        }
+
         public string Name { get; set; }
         public string CountryOfOrigin { get; set; }
         public int Strength { get; set; }

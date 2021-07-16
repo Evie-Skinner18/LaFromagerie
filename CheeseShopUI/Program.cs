@@ -55,6 +55,17 @@ namespace CheeseShopUI
             // so they can update themselves and keep their cheese preferences relevant
 
             // STRATEGY
+            // users can order individual cheese boxes
+            // inside an order, the behaviour for assembling a cheese box is deferrred to an ICheeseBoxAssembly
+            // all orders assemble cheese boxes but an order has nothing to do with how its cheese box gets assembled
+            Console.WriteLine("Time to show you the other side of La Fromagerie: the cheese shop! Order a specially selected one-off cheese box and we will send it to you right away :->");
+            Order cheddarSelectionBox = 
+
+
+            // Yoann's order for the Creamy Delights cheese box will go to a cooler country: France. This means we need a 
+            // cheese box assembly algorithm that will assemble it in the normal packaging
+            // Gaddafi wants his Paneer Selection cheese box delivered to Libya so he will need a cheese assembly algorithm that will
+            // assemble it with a special cooling layer
 
         }
     }
