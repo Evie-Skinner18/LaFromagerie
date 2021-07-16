@@ -13,5 +13,9 @@ La Fromagerie is your one stop shop for all your cheesy needs: we are a subscrip
 ✅ Observer pattern:
 _Used to notify users when their cheese box subscription changes_
 
-Strategy pattern:
+✅ Strategy pattern:
 _Used to assemble a cheese box ready for delivery in a range of different ways_
+
+*To-do:*
+- Facade pattern
+- Decorator pattern
