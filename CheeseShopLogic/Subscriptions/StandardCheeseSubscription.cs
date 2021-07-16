@@ -12,17 +12,19 @@ namespace CheeseShopLogic.Subscriptions
             // these pieces of data will be observed
             _name = name;
             _monthlyPrice = monthlyPrice;
+            _costToProduce = 8.0m;
             _subjectSubscription = subjectSubscription;
         }
 
         private string _name { get; set; }
         private decimal _monthlyPrice { get; set; }
+        private decimal _costToProduce { get; set; }
         private ISubscription _subjectSubscription;
 
 
         public string Subscribe()
         {
-            return $"You have successfully signed up to the standard subscription {_name} for £{_monthlyPrice} per month.";
+            return $"You have successfully signed up to the standard subscription {_name} for £{_monthlyPrice} per month. La Fromagerie will notify you if this price changes.";
         }
 
         public void ChangeName(string newName)
@@ -30,9 +32,11 @@ namespace CheeseShopLogic.Subscriptions
             _name = newName;
         }
 
-        public void ChangePrice(decimal newPrice)
+        public void ChangeCostToProduce(decimal newCost)
         {
-            _monthlyPrice = newPrice;
+            _costToProduce = _costToProduce;
+            _monthlyPrice += 1.50m;
+            NotifyObservers();
         }
 
         public string GetName()

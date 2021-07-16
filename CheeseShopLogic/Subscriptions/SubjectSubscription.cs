@@ -5,7 +5,7 @@ namespace CheeseShopLogic.Subscriptions
 {
     public class SubjectSubscription : ISubscription
     {
-        private List<IObserver> _observers;
+        private List<IObserver> _observers = new List<IObserver>();
 
         public void Attach(IObserver observer)
         {

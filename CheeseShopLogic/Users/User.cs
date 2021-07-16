@@ -9,10 +9,11 @@ namespace CheeseShopLogic.Users
     {
         // OBSERVER PATTERN:
         // an observer object who is interested in the subject
-        public User(string name, string language)
+        public User(string name, string language, decimal monthlyBillingAmount)
         {
             Name = name;
             Language = language;
+            _monthlyBillingAmount = monthlyBillingAmount;
         }
 
         public string Name { get; set; }
@@ -20,11 +21,13 @@ namespace CheeseShopLogic.Users
         // we can recommend a cheese box subscription based on user's preferences
         private List<string> _flavourPreferences { get; set; }
         private CheeseType _favouriteCheese { get; set; }
+        private decimal _monthlyBillingAmount { get; set; }
+        private string _latestUpdateMessage { get; set; }
 
 
-        public static User Create(string name, string language)
+        public static User Create(string name, string language, decimal monthlyBillingAmount)
         {
-            var user = new User(name, language);
+            var user = new User(name, language, monthlyBillingAmount);
             return user;
         }
 
@@ -52,7 +55,13 @@ namespace CheeseShopLogic.Users
         {
             // e.g update their monthly billing amount we will email them
             // update their loyalty points/discounts
-            throw new NotImplementedException();
+            _monthlyBillingAmount += 1.50m;
+            _latestUpdateMessage = $"Your monthly billing amount has changed to £{_monthlyBillingAmount}.";
+        }
+
+        public string GetUpdateMessage()
+        {
+            return _latestUpdateMessage;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CheeseShopLogic.Subscriptions
+﻿using CheeseShopLogic.Users;
+
+namespace CheeseShopLogic.Subscriptions
 {
     public class PremiumCheeseSubscription : ISubscription
     {
@@ -12,6 +14,11 @@
         private string _name { get; set; }
         private decimal _monthlyPrice { get; set; }
 
+        public void Attach(IObserver observer)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void ChangeName(string newName)
         {
             throw new System.NotImplementedException();
@@ -22,12 +29,22 @@
             throw new System.NotImplementedException();
         }
 
+        public void Detach(IObserver observer)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public string GetName()
         {
             throw new System.NotImplementedException();
         }
 
         public decimal GetPrice()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void NotifyObservers()
         {
             throw new System.NotImplementedException();
         }
