@@ -5,26 +5,26 @@ using System.Text;
 
 namespace CheeseShopLogic.Users
 {
-    public class User
+    public class User : IObserver
     {
-        public User(string name, ISubscription subscription, string language)
+        // OBSERVER PATTERN:
+        // an observer object who is interested in the subject
+        public User(string name, string language)
         {
             Name = name;
-            Subscription = subscription;
             Language = language;
         }
 
         public string Name { get; set; }
-        public ISubscription Subscription { get; set; }
         public string Language { get; set; }
         // we can recommend a cheese box subscription based on user's preferences
         private List<string> _flavourPreferences { get; set; }
         private CheeseType _favouriteCheese { get; set; }
 
 
-        public static User Create(string name, ISubscription subscription, string country)
+        public static User Create(string name, string language)
         {
-            var user = new User(name, subscription, country);
+            var user = new User(name, language);
             return user;
         }
 
@@ -46,6 +46,13 @@ namespace CheeseShopLogic.Users
         public CheeseType GetFavouriteCheese()
         {
             return _favouriteCheese;
+        }
+
+        public void Update()
+        {
+            // e.g update their monthly billing amount we will email them
+            // update their loyalty points/discounts
+            throw new NotImplementedException();
         }
     }
 }
