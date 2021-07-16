@@ -4,13 +4,26 @@ namespace CheeseShopLogic
 {
     public class CheeseType
     {
+        private CheeseType(string name, string countryOfOrigin, int strength)
+        {
+            Name = name;
+            CountryOfOrigin = countryOfOrigin;
+            Strength = strength;
+        }
+
         public string Name { get; set; }
         public string CountryOfOrigin { get; set; }
         public int Strength { get; set; }
         private decimal _price { get; set; }
 
+        public static CheeseType Create(string name, string countryOfOrigin, int strength)
+        {
+            var cheeseType = new CheeseType(name, countryOfOrigin, strength);
+            return cheeseType;
+        }
+
         public bool IsSmelly() => Strength > 3;
-        public bool IsPremiumCheese => _price > 4.0m;
+        public bool IsPremiumCheese() => _price > 4.0m;
 
         public void SetPrice()
         {
