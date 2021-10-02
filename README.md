@@ -1,6 +1,6 @@
 # 📌Bienvenue a la Fromagerie!
 ## 📌 You got the need, we got the cheese
-La Fromagerie is your one stop shop for all your cheesy needs: we are a subscription-based Cheese-as-a-service (ChaaS)!
+La Fromagerie is your one stop shop for all your cheesy needs - we are a subscription-based Cheese-as-a-service(ChaaS)!
 
 # 📌 Tools and Technologies Used
 - C#
