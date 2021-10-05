@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace CheeseShopLogic.Users;
 
-namespace CheeseShopLogic.Users
+public interface IObserver
 {
-    public interface IObserver
-    {
-        void Update();
-    }
+    void Update();
 }

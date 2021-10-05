@@ -1,10 +1,6 @@
-﻿using System;
-using System.Text;
+﻿namespace CheeseShopLogic.CheeseBoxes;
 
-namespace CheeseShopLogic.CheeseBoxes
+public interface ICheeseBoxAssembly
 {
-    public interface ICheeseBoxAssembly
-    {
-        string AssembleCheeseBox();
-    }
+    string AssembleCheeseBox();
 }

@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace CheeseShopLogic.Infrastructure;
 
-namespace CheeseShopLogic.Infrastructure
+public enum Status
 {
-    public enum Status
-    {
-        Received,
-        Dispatched,
-        Delivered
-    }
+    Received,
+    Dispatched,
+    Delivered
+}
 
-    public enum DeliveryMethod
-    {
-        NextDay,
-        Standard,
-        Free
-    }
+public enum DeliveryMethod
+{
+    NextDay,
+    Standard,
+    Free
 }
