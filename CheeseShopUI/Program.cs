@@ -1,12 +1,12 @@
 ﻿Console.WriteLine("Bienvenue a la fromagerie! We're your friendly Cheese-as-a-service (ChaaS). Let's show you the subscriptions in action.");
 
 // OBSERVER
-// I have subscribers/customers       
-//  when a subscription changes
+// I have subscribers/customers
+// when a subscription changes
 // the users of that subscription need to be notified
 // so they can update themselves and keep their cheese preferences relevant
-SubjectSubscription subjectSubscription = new SubjectSubscription();
-StandardCheeseSubscription frenchFavesSubscription = new StandardCheeseSubscription("French Faves", 10.0m, subjectSubscription);
+SubjectSubscription subjectSubscription = new();
+StandardCheeseSubscription frenchFavesSubscription = new("French Faves", 10.0m, subjectSubscription);
 
 var subscribeMessage = frenchFavesSubscription.Subscribe();
 var frenchFavesStartingPrice = frenchFavesSubscription.GetPrice();
@@ -16,19 +16,15 @@ var frenchUser = User.Create("Yoann", "francais", frenchFavesStartingPrice);
 var moammarqadhafi = User.Create("Moammar Qadhafi", "Arabic", frenchFavesStartingPrice);
 var nileRodgers = User.Create("Nile Rodgers", "English", frenchFavesStartingPrice);
 
-var users = new List<User>() { frenchUser, moammarqadhafi, nileRodgers };
+List<User> users = new() { frenchUser, moammarqadhafi, nileRodgers };
 
 foreach (var user in users)
-{
     Console.WriteLine($"Hiya {user.Name}! We have set up your initial billing price. {subscribeMessage}");
-}
 
 // who are the ones to notify about changes? who's observing?
 Console.WriteLine("Attaching users to the list of observers...");
 foreach (var user in users)
-{
     frenchFavesSubscription.Attach(user);
-}
 
 // oh no, the price it takes for the business to produce this cheese box has gone up! Bloody Brexit.
 frenchFavesSubscription.ChangeCostToProduce(12.0m);
@@ -53,11 +49,11 @@ var cheddarTypes = new List<CheeseType>()
                 CheeseType.Create("Da Orginal 1 from Cheddar Gorge", "England", 3)
             };
 
-CheeseBox cheddarSelectionBox = CheeseBox.Create("Cheddar Selection", cheddarTypes);
+var cheddarSelectionBox = CheeseBox.Create("Cheddar Selection", cheddarTypes);
 // this order is going to our French user so we need to give it the NorthernEuropeCheeseAssembly
 // from the family of CheeseAssembly algorithms at runtime
-NorthernEuropeCheeseAssembly cheeseAssemblyMethodForFrance = new NorthernEuropeCheeseAssembly();
-Order yoannsCheddarSelectionOrder = Order.Create(new Guid(), DateTime.Now, cheeseAssemblyMethodForFrance, frenchUser, cheddarSelectionBox, DeliveryMethod.Standard);
+NorthernEuropeCheeseAssembly cheeseAssemblyMethodForFrance = new();
+var yoannsCheddarSelectionOrder = Order.Create(new Guid(), DateTime.Now, cheeseAssemblyMethodForFrance, frenchUser, cheddarSelectionBox, DeliveryMethod.Standard);
 
 Console.WriteLine(yoannsCheddarSelectionOrder.GetStatusMessage());
 Console.WriteLine($"The total cost of your order is {yoannsCheddarSelectionOrder.GetTotalCost()}.");
@@ -74,8 +70,8 @@ yoannsCheddarSelectionOrder.MarkAsDelivered();
 Console.WriteLine(yoannsCheddarSelectionOrder.GetStatusMessage());
 
 // now send the same cheese box to Gaddafi in Libya
-NorthAfricaCheeseBoxAssembly cheeseAssemblyMethodForLibya = new NorthAfricaCheeseBoxAssembly();
-Order gaddafisCheddarSelectionOrder = Order.Create(new Guid(), DateTime.Now, cheeseAssemblyMethodForLibya, moammarqadhafi, cheddarSelectionBox, DeliveryMethod.Free);
+NorthAfricaCheeseBoxAssembly cheeseAssemblyMethodForLibya = new();
+var gaddafisCheddarSelectionOrder = Order.Create(new Guid(), DateTime.Now, cheeseAssemblyMethodForLibya, moammarqadhafi, cheddarSelectionBox, DeliveryMethod.Free);
 
 Console.WriteLine(gaddafisCheddarSelectionOrder.GetStatusMessage());
 Console.WriteLine($"The total cost of your order is {gaddafisCheddarSelectionOrder.GetTotalCost()}.");

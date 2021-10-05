@@ -28,7 +28,7 @@ public class Order
     public static Order Create(Guid id, DateTime dateOrdered, ICheeseBoxAssembly cheeseBoxAssembly,
         User orderingUser, CheeseBox cheeseBoxOrdered, DeliveryMethod deliveryMethod)
     {
-        var newOrder = new Order(id, dateOrdered, cheeseBoxAssembly, orderingUser, cheeseBoxOrdered, deliveryMethod);
+        Order newOrder = new(id, dateOrdered, cheeseBoxAssembly, orderingUser, cheeseBoxOrdered, deliveryMethod);
         return newOrder;
     }
 
@@ -65,12 +65,12 @@ public class Order
 
     public decimal CalculateDeliveryCharge()
     {
-        switch (_deliveryMethod)
+        return _deliveryMethod switch
         {
-            case DeliveryMethod.NextDay: return 5.0m;
-            case DeliveryMethod.Standard: return 1.0m;
-            case DeliveryMethod.Free: return 0m;
-            default: return 1.0m;
-        }
+            DeliveryMethod.NextDay => 5.0m,
+            DeliveryMethod.Standard => 1.0m,
+            DeliveryMethod.Free => 0m,
+            _ => 1.0m,
+        };
     }
 }

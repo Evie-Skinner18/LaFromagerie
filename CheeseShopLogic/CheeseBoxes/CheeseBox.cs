@@ -14,17 +14,16 @@ public class CheeseBox
 
     public static CheeseBox Create(string name, List<CheeseType> cheesesInside)
     {
-        var cheeseBox = new CheeseBox(name, cheesesInside);
+        CheeseBox cheeseBox = new(name, cheesesInside);
         return cheeseBox;
     }
 
     public decimal CalculateTotalPrice()
     {
         decimal totalPrice = 0m;
+
         foreach (var cheese in _cheesesInside)
-        {
             totalPrice += cheese.GetPrice();
-        }
 
         return totalPrice;
     }

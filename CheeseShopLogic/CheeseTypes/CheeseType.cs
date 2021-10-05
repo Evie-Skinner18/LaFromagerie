@@ -16,7 +16,7 @@ public class CheeseType
 
     public static CheeseType Create(string name, string countryOfOrigin, int strength)
     {
-        var cheeseType = new CheeseType(name, countryOfOrigin, strength);
+        CheeseType cheeseType = new(name, countryOfOrigin, strength);
         return cheeseType;
     }
 

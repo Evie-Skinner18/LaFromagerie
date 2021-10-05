@@ -2,8 +2,10 @@
 
 public class User : IObserver
 {
-    // OBSERVER PATTERN:
-    // an observer object who is interested in the subject
+    /// <summary>
+    /// OBSERVER PATTERN:
+    /// an observer object who is interested in the subject
+    /// </summary>
     public User(string name, string language, decimal monthlyBillingAmount)
     {
         Name = name;
@@ -22,7 +24,7 @@ public class User : IObserver
 
     public static User Create(string name, string language, decimal monthlyBillingAmount)
     {
-        var user = new User(name, language, monthlyBillingAmount);
+        User user = new(name, language, monthlyBillingAmount);
         return user;
     }
 

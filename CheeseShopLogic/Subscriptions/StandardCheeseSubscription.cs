@@ -1,8 +1,10 @@
 ﻿namespace CheeseShopLogic.Subscriptions;
 
-// OBSERVER PATTERN:
-// StandardCheeseSubscription implements the the subject interface (ISubscription) and also has another implmentation of  ISubscription inside it ,e.g subject Subscription
-// subject Subscription has a list of observers inside (e.g list of users)
+/// <summary>
+/// OBSERVER PATTERN:
+/// StandardCheeseSubscription implements the the subject interface (ISubscription) and also has another implmentation of  ISubscription inside it ,e.g subject Subscription
+/// subject Subscription has a list of observers inside (e.g list of users)
+/// </summary>
 public class StandardCheeseSubscription : ISubscription
 {
     public StandardCheeseSubscription(string name, decimal monthlyPrice, ISubscription subjectSubscription)
