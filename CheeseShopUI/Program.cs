@@ -4,6 +4,7 @@ using CheeseShopLogic.Infrastructure;
 using CheeseShopLogic.Orders;
 using CheeseShopLogic.Subscriptions;
 using CheeseShopLogic.Users;
+using CheeseShopLogic.Cheese;
 using System;
 using System.Collections.Generic;
 
@@ -100,6 +101,12 @@ namespace CheeseShopUI
 
             gaddafisCheddarSelectionOrder.Dispatch();
             Console.WriteLine(gaddafisCheddarSelectionOrder.GetStatusMessage());
+
+            // DECORATOR PATTERN
+            Cheese cheese = new CheeseShopLogic.Cheese.SaintNectaire();
+            Console.WriteLine("Saint Nectaire: " + cheese.GetPrice());
+            cheese = new SixMonth(cheese);
+            Console.WriteLine("Saint Nectaire affiné 6 mois " + cheese.GetPrice());
         }
     }
 }

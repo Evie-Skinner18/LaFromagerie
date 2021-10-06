@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CheeseShopLogic.Cheese
 {
-    class SaintNectaire : Cheese
+    public class SaintNectaire : Cheese
     {
         public SaintNectaire()
         {
