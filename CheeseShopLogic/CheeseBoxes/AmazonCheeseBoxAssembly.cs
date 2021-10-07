@@ -1,10 +1,9 @@
-﻿namespace CheeseShopLogic.CheeseBoxes
+﻿namespace CheeseShopLogic.CheeseBoxes;
+
+public class AmazonCheeseBoxAssembly : ICheeseBoxAssembly
 {
-    public class AmazonCheeseBoxAssembly : ICheeseBoxAssembly
+    public string AssembleCheeseBox()
     {
-        public string AssembleCheeseBox()
-        {
-            return "Affixing a stamp for the Amazon. It's very humid there so we need to give the cheese box a sweat absorbant fabric.";
-        }
+        return "Affixing a stamp for the Amazon. It's very humid there so we need to give the cheese box a sweat absorbant fabric.";
     }
 }
