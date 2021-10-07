@@ -16,9 +16,12 @@ _Used to notify users when their cheese box subscription changes_
 ✅ Strategy pattern:
 _Used to assemble a cheese box ready for delivery in a range of different ways_
 
+✅ Decorator pattern
+_Used to present a variety of cheeses with different ages and prices_
+
 *To-do:*
 - Facade pattern
-- Decorator pattern
+- Another one that I haven't thought of!
 
 *Before making a Pull Request make sure you follow our [Code of Conduct](<add-link-here>)*
 
