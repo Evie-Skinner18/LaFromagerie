@@ -1,49 +1,46 @@
-﻿using System;
+﻿namespace CheeseShopLogic;
 
-namespace CheeseShopLogic
+public class CheeseType
 {
-    public class CheeseType
+    private CheeseType(string name, string countryOfOrigin, int strength)
     {
-        private CheeseType(string name, string countryOfOrigin, int strength)
+        Name = name;
+        CountryOfOrigin = countryOfOrigin;
+        Strength = strength;
+    }
+
+    public string Name { get; set; }
+    public string CountryOfOrigin { get; set; }
+    public int Strength { get; set; }
+    private decimal _price { get; set; }
+
+    public static CheeseType Create(string name, string countryOfOrigin, int strength)
+    {
+        CheeseType cheeseType = new(name, countryOfOrigin, strength);
+        return cheeseType;
+    }
+
+    public bool IsSmelly() => Strength > 3;
+    public bool IsPremiumCheese() => _price > 4.0m;
+
+    public void SetPrice()
+    {
+        if (CountryOfOrigin == "France")
         {
-            Name = name;
-            CountryOfOrigin = countryOfOrigin;
-            Strength = strength;
+            _price = 3.0m;
         }
-
-        public string Name { get; set; }
-        public string CountryOfOrigin { get; set; }
-        public int Strength { get; set; }
-        private decimal _price { get; set; }
-
-        public static CheeseType Create(string name, string countryOfOrigin, int strength)
+        else if (IsSmelly())
         {
-            var cheeseType = new CheeseType(name, countryOfOrigin, strength);
-            return cheeseType;
+            _price = 4.0m;
         }
-
-        public bool IsSmelly() => Strength > 3;
-        public bool IsPremiumCheese() => _price > 4.0m;
-
-        public void SetPrice()
+        else
         {
-            if (CountryOfOrigin == "France")
-            {
-                _price = 3.0m;
-            }
-            else if (IsSmelly())
-            {
-                _price = 4.0m;
-            }
-            else
-            {
-                _price = 2.0m;
-            }
+            _price = 2.0m;
         }
+    }
 
-        public decimal GetPrice()
-        {
-            return _price;
-        }
+    public decimal GetPrice()
+    {
+        return _price;
     }
 }

@@ -1,14 +1,9 @@
-﻿using CheeseShopLogic.Users;
-using System;
-using System.Text;
+﻿namespace CheeseShopLogic.Subscriptions;
 
-namespace CheeseShopLogic.Subscriptions
+public interface ISubscription
 {
-    public interface ISubscription
-    {
-        string Subscribe();
-        void Attach(IObserver observer);
-        void Detach(IObserver observer);
-        void NotifyObservers();
-    }
+    string Subscribe();
+    void Attach(IObserver observer);
+    void Detach(IObserver observer);
+    void NotifyObservers();
 }
