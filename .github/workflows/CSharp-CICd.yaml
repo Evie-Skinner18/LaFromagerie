@@ -38,7 +38,7 @@ jobs:
         os: [windows-2019, ubuntu-20.04, macos-10.15]
         version: [Debug, Release]
 
-    name: Build Solution On ${{ matrix.os }}
+    name: Build Solution On ${{ matrix.os }} With ${{ matrix.version }} Profile
     runs-on: ${{ matrix.os }}
     steps:
       - name: 🛒 Checkout
