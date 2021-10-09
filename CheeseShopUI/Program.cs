@@ -1,4 +1,8 @@
-﻿Console.WriteLine("Bienvenue a la fromagerie! We're your friendly Cheese-as-a-service (ChaaS). Let's show you the subscriptions in action.");
+﻿using CheeseShopLogic.Cheese;
+using CheeseShopLogic.Shop;
+using CheeseShopLogic.Shop.Models;
+
+Console.WriteLine("Bienvenue a la fromagerie! We're your friendly Cheese-as-a-service (ChaaS). Let's show you the subscriptions in action.");
 
 // OBSERVER
 // I have subscribers/customers
@@ -87,3 +91,51 @@ Cheese cheese = new CheeseShopLogic.Cheese.SaintNectaire();
 Console.WriteLine("Saint Nectaire: " + cheese.GetPrice());
 cheese = new SixMonth(cheese);
 Console.WriteLine("Saint Nectaire affiné 6 mois " + cheese.GetPrice());
+
+
+
+// FACADE PATTERN USING A BRICK AND MORTAR STORE
+var store = new Store("Cheese Emporium", "USA");
+// Cheese needs to be delivered.
+var cheddar = CheeseType.Create("Wisconsin Cheddar", "USA", 10);
+var brie = CheeseType.Create("Wisconsin Brie", "USA", 2);
+var muenster = CheeseType.Create("Marvelous Muenster", "USA", 1);
+var cheeses = new Dictionary<CheeseType, int>
+{
+    {
+       cheddar, 20
+    },
+    {
+        brie, 10
+    },
+    {
+        muenster, 20
+    },
+};
+store.RestockCheese(cheeses);
+//some customers came in!
+var john = new Customer("Joaquin");
+var mary = new Customer("Mary");
+
+store.CustomerEnter(john);
+store.CustomerEnter(mary);
+
+Console.WriteLine($"{john.Name} has {john.Cart.Cheeses?.Count} items in his cart.");
+Console.WriteLine($"{mary.Name} has {mary.Cart.Cheeses?.Count} items in his cart.");
+
+try
+{
+    john.AddCheeseToCart(cheddar, 2);
+    mary.AddCheeseToCart(brie, 9);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+store.PrintStock();
+store.CheckoutCustomer(john);
+Console.WriteLine($"Customers in store: {store.Customers.Count}");
+store.CheckoutCustomer(mary);
+Console.WriteLine($"Customers in store: {store.Customers.Count}");
+store.PrintStock();
