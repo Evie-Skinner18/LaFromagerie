@@ -7,7 +7,7 @@ namespace CheeseShopLogic.Shop
     {
         public string ShopName { get; set; }
         public string ShopCountry { get; set; }
-        public List<Customer> Customers { get; set; } = new List<Customer>();
+        private List<Customer> Customers { get; set; } = new List<Customer>();
 
         private readonly StockService _stockService;
         private readonly CheckoutService _checkoutService;
