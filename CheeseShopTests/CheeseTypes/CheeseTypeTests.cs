@@ -1,5 +1,3 @@
-using NUnit.Framework;
-
 namespace CheeseShopTests.CheeseTypes;
 
 public class CheeseTypeTests
@@ -9,7 +7,7 @@ public class CheeseTypeTests
     {
         CheeseType emmental = CheeseType.Create("Tastiest Emmental", "Suisse", 0);
 
-        Assert.IsFalse(emmental.IsSmelly());
+        emmental.IsSmelly().Should().BeFalse();
     }
 
     [Test]
@@ -17,7 +15,7 @@ public class CheeseTypeTests
     {
         CheeseType stinkingBishop = CheeseType.Create("Stinking Bishop", "UK", 4);
 
-        Assert.IsTrue(stinkingBishop.IsSmelly());
+        stinkingBishop.IsSmelly().Should().BeTrue();
     }
 
     [Test]
@@ -28,6 +26,6 @@ public class CheeseTypeTests
         smokedSausage.SetPrice();
         decimal smokedSausagePrice = smokedSausage.GetPrice();
 
-        Assert.AreEqual(4.0m, smokedSausagePrice);
+        smokedSausagePrice.Should().Be(4.0m);
     }
 }

@@ -1,5 +1,3 @@
-using NUnit.Framework;
-
 namespace CheeseShopTests.Shop;
 
 public class CustomerTests
@@ -12,7 +10,9 @@ public class CustomerTests
 
         dave.AddCheeseToCart(stilton, 3);
 
-        Assert.AreEqual(3, dave.Cart.Cheeses.Count);
-        Assert.AreEqual("Stilton", dave.Cart.Cheeses.FirstOrDefault().Name);
+        dave.Cart.Cheeses.Should().HaveCount(3);
+
+        dave.Cart.Cheeses.FirstOrDefault().Name
+            .Should().Be("Stilton");
     }
 }

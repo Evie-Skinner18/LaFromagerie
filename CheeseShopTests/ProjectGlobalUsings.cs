@@ -6,7 +6,7 @@ global using CheeseShopLogic.Subscriptions;
 global using CheeseShopLogic.Users;
 global using CheeseShopLogic.Cheese;
 global using CheeseShopLogic.Shop.Models;
+global using NUnit.Framework;
+global using FluentAssertions;
 
-global using System;
-global using System.Collections.Generic;
 global using System.Linq;
