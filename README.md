@@ -15,7 +15,7 @@ La Fromagerie is your one stop shop for all your cheesy needs: we are a subscrip
 - Git
 
 # Contributing
-- See the [instructions] (#CONTRIBUTING.md)
+- See the [instructions](#CONTRIBUTING.md)
 
 # 📌 OOP Design Patterns Used
 ✅ Observer pattern:
