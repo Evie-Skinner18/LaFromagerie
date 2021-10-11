@@ -1,8 +1,9 @@
-_Contributing_
+_Contributing_ :star:
 Welcome and thanks for considering making a contribution to La Fromagerie!
 
 *Prerequisites*
-- .Net 6 (download here). This is the next stage of .Net: it's cross platform, like .Net Core, so you'll be able to develop with it no matter what environment you use!
+- C#
+- .Net 6 [Download from Microsoft](https://dotnet.microsoft.com/download/dotnet/6.0) This is the next stage of .Net: it's cross platform, like .Net Core, so you'll be able to develop with it no matter what environment you use!
 - A code editor or IDE. E.g VS Code or JetBrains Rider
 
 *Instructions*
@@ -11,6 +12,6 @@ Welcome and thanks for considering making a contribution to La Fromagerie!
 - Keep your local forked version up to date
 - Build LaFromagerie.sln and run the unit tests
 - If it all builds fine and the unit tests pass, you're ready to push!
-- If there are any build failures, we will mention it in code review feedback
+- If there are any build failures, we will mention it in code review feedback :rocket:
 
 _Happy coding and we look forward to seeing your progress!_

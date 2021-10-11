@@ -14,6 +14,9 @@ La Fromagerie is your one stop shop for all your cheesy needs: we are a subscrip
 - Powershell
 - Git
 
+# Contributing
+- See the [instructions] (#CONTRIBUTING.md)
+
 # 📌 OOP Design Patterns Used
 ✅ Observer pattern:
 _Used to notify users when their cheese box subscription changes_
