@@ -1,4 +1,4 @@
-﻿global using CheeseShopLogic;
+global using CheeseShopLogic;
 global using CheeseShopLogic.CheeseBoxes;
 global using CheeseShopLogic.Infrastructure;
 global using CheeseShopLogic.Orders;
@@ -9,3 +9,4 @@ global using CheeseShopLogic.Shop.Models;
 
 global using System;
 global using System.Collections.Generic;
+global using System.Linq;
