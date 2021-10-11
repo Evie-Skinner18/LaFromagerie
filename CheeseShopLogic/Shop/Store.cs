@@ -57,5 +57,10 @@ namespace CheeseShopLogic.Shop
                 Console.WriteLine($"{kvp.Key.Name}: {kvp.Value}");
             }
         }
+
+        public int GetCustomerCount()
+        {
+            return Customers.Count;
+        }
     }
 }

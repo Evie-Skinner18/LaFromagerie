@@ -135,7 +135,7 @@ catch (Exception ex)
 
 store.PrintStock();
 store.CheckoutCustomer(john);
-Console.WriteLine($"Customers in store: {store.Customers.Count}");
+Console.WriteLine($"Customers in store: {store.GetCustomerCount()}");
 store.CheckoutCustomer(mary);
-Console.WriteLine($"Customers in store: {store.Customers.Count}");
+Console.WriteLine($"Customers in store: {store.GetCustomerCount()}");
 store.PrintStock();
