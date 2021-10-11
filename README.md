@@ -2,6 +2,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/Evie-Skinner18/LaFromagerie)](https://github.com/Evie-Skinner18/LaFromagerie/issues)
 [![GitHub stars](https://img.shields.io/github/stars/Evie-Skinner18/LaFromagerie)](https://github.com/Evie-Skinner18/LaFromagerie/stargazers)
 [![Dotnet version](https://img.shields.io/badge/Dotnet-6-blue)](https://dotnet.microsoft.com/download/dotnet/6.0)
+[![CSharp-CICd](https://github.com/Evie-Skinner18/LaFromagerie/actions/workflows/CSharp-CICd.yaml/badge.svg)](https://github.com/Evie-Skinner18/LaFromagerie/actions/workflows/CSharp-CICd.yaml)
+
 ## 📌 You got the need, we got the cheese
 La Fromagerie is your one stop shop for all your cheesy needs: we are a subscription-based Cheese-as-a-service (ChaaS)!
 
