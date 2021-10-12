@@ -11,7 +11,10 @@ Welcome and thanks for considering making a contribution to La Fromagerie!
 - Feel free to suggest a new issue if it's not already covered. Please ensure your new idea is helpful and contributes to the learning we are trying to do here about design patterns.
 - Keep your local forked version up to date
 - Build LaFromagerie.sln and run the unit tests
+- __(Optional)__ Install formatation tools using `dotnet tool install -g --prerelease dotnet-format`
+- __(Optional)__ Format your code using `dotnet-format` command in project folder.
 - If it all builds fine and the unit tests pass, you're ready to push!
+- Check your commit github actions, if all test pass you can now make a pull request for us!
 - If there are any build failures, we will mention it in code review feedback :rocket:
 
 _Happy coding and we look forward to seeing your progress!_
