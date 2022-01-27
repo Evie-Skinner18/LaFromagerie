@@ -2,5 +2,8 @@
 
 public interface IObserver
 {
-    void Update();
+    string Name {get; set;}
+
+    void Update(string latestUpdateMessage);
+    string GetUpdateMessage();
 }

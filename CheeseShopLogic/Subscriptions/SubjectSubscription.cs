@@ -14,16 +14,21 @@ public class SubjectSubscription : ISubscription
         _observers.Remove(observer);
     }
 
-    public void NotifyObservers()
+    public void NotifyObservers(string latestUpdateMessage)
     {
         foreach (var observer in _observers)
         {
-            observer.Update();
+            observer.Update(latestUpdateMessage);
         }
     }
 
     public string Subscribe()
     {
         return "Hello from the Subject Subscription!";
+    }
+
+    public List<IObserver> GetObservers()
+    {
+        return _observers;
     }
 }

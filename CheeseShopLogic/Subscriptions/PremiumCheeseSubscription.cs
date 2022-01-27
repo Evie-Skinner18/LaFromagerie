@@ -49,7 +49,7 @@ public class PremiumCheeseSubscription : ISubscription
     }
 
     /// <inheritdoc/>
-    public void NotifyObservers()
+    public void NotifyObservers(string latestUpdateMessage)
     {
         throw new System.NotImplementedException();
     }
@@ -58,4 +58,10 @@ public class PremiumCheeseSubscription : ISubscription
     {
         return $"You have successfully signed up to the premium subscription {_name} for £{_monthlyPrice} per month.";
     }
+
+    public List<IObserver> GetObservers()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }

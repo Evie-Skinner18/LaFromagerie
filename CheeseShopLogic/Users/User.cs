@@ -48,12 +48,12 @@ public class User : IObserver
         return _favouriteCheese;
     }
 
-    public void Update()
+    public void Update(string latestUpdateMessage)
     {
         // e.g update their monthly billing amount we will email them
         // update their loyalty points/discounts
         _monthlyBillingAmount += 1.50m;
-        _latestUpdateMessage = $"Your monthly billing amount has changed to £{_monthlyBillingAmount}.";
+        _latestUpdateMessage = latestUpdateMessage;
     }
 
     public string GetUpdateMessage()

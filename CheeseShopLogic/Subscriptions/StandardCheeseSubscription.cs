@@ -30,13 +30,14 @@ public class StandardCheeseSubscription : ISubscription
     public void ChangeName(string newName)
     {
         _name = newName;
+        NotifyObservers($"The new name of your subscription is {newName}");
     }
 
     public void ChangeCostToProduce(decimal newCost)
     {
         _costToProduce = _costToProduce;
         _monthlyPrice += 1.50m;
-        NotifyObservers();
+        NotifyObservers($"Your new monthly price is {_monthlyPrice}");
     }
 
     public string GetName()
@@ -59,8 +60,13 @@ public class StandardCheeseSubscription : ISubscription
         _subjectSubscription.Detach(user);
     }
 
-    public void NotifyObservers()
+    public void NotifyObservers(string latestUpdateMessage)
     {
-        _subjectSubscription.NotifyObservers();
+        _subjectSubscription.NotifyObservers(latestUpdateMessage);
+    }
+
+    public List<IObserver> GetObservers()
+    {
+        return _subjectSubscription.GetObservers();
     }
 }

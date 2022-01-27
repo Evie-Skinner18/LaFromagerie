@@ -11,5 +11,8 @@ public interface ISubscription
     void Detach(IObserver observer);
 
     /// <exception cref="System.NotImplementedException"></exception>
-    void NotifyObservers();
+    void NotifyObservers(string latestUpdateMessage);
+
+    /// <exception cref="System.NotImplementedException"></exception>
+    List<IObserver> GetObservers();
 }
